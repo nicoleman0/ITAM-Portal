@@ -15,12 +15,18 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 
+# Site details
+admin.site.site_header = "IT Asset Management Admin"
+admin.site.site_title = "ITAM Admin Portal"
+admin.site.index_title = "Welcome to the ITAM Portal."
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', include('assets.urls')),
 ]
 
 # Serve media files in development
